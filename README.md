@@ -14,11 +14,11 @@ Initially, I eliminated ID columns (EIN, NAME) that are assumed to be not benefi
 
 ![1677702515014](image/README/1677702515014.png)
 
-In order for the model to perform correctly, it cannot have string values. An easy way to covert string values to a interager or float is by uysing pd.get_dummies and create a new dataframe.
+In order for the model to perform correctly, it cannot have string values. An easy way to covert string values to a interager or float is by using pd.get_dummies and create a new dataframe.
 
 ![1677702803250](image/README/1677702803250.png)
 
-Now that the data is ready to load into a model, we can now split the target value and the features. I will be using the "IS_SUCCESSFUL" as the target and the remaining variables will be the features.
+Now that the data is ready to load into a model, we can split the target value and the features. I will be using the "IS_SUCCESSFUL" as the target and the remaining variables will be the features.
 
 ![1677703063213](image/README/1677703063213.png)
 
