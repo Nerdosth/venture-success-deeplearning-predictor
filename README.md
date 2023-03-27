@@ -1,24 +1,59 @@
-# deep-learning-challenge
+# Venture Success Analysis
 
-# **Overview**
+This project aims to create a binary classifier deep learning model to predict the success of various charity organizations using TensorFlow. The goal is to help the Alphabet Soup organization identify which charities to prioritize based on the likelihood of the charity's success.
 
-Alphabet Soup is seeking a tool that can assist in identifying the funding applicants who have the highest probability of succeeding in their ventures. To accomplish this objective, I will utilize neural network models with the given dataset and optimize the models to yield the most precise outcomes. The goal is to create a model with 75% accuracy.
+## Requirements
 
----
+To run this code, you will need the following Python libraries:
 
-# Results
+* pandas
+* sklearn
+* tensorflow
+
+## Usage
+
+1. Download the `charity_data.csv` dataset and place it in the `Resources` folder.
+2. Run the provided code to preprocess the data, train the deep learning model, and evaluate its performance.
+
+## Overview
+
+The code is structured in two parts:
+
+### Part 1: Preprocessing
+
+* Imports the necessary dependencies.
+* Reads the charity dataset and drops the non-beneficial ID columns, 'EIN' and 'NAME'.
+* Determines the number of unique values in each column.
+* Bin the 'NAME', 'APPLICATION_TYPE', and 'CLASSIFICATION' columns to reduce the number of unique categories.
+* Encodes the categorical data using one-hot encoding (`pd.get_dummies`).
+* Splits the preprocessed data into training and testing sets.
+* Scales the data using `StandardScaler`.
+
+### Part 2: Compile, Train, and Evaluate the Model
+
+* Defines a deep neural network model with two hidden layers and one output layer.
+* Compiles the model using a binary cross-entropy loss function and the Adam optimizer.
+* Trains the model with the scaled training data.
+* Evaluates the model's performance using the scaled test data.
+* Plots the model's accuracy during training.
+* Saves the model's weights to an HDF5 file.
+
+
+## Results
+
+This project involved multiple iterations of data preprocessing and feature engineering to develop the best possible machine learning model. The steps taken are outlined below, which can be used as a reference to evaluate the approach taken. You may consider alternative methods or strategies based on your own experience and expertise.
 
 ### Data Preprocessing
 
-Initially, I eliminated ID columns (EIN, NAME) that are assumed to be not beneficial for the model and could hinder its performance. We began by making assumptions, which I later validated. Next, I grouped applicants and classifications and placed them in an "Other" bin for all the one-off funded accounts.
+Initially, eliminates ID columns (EIN, NAME) that are assumed to be not beneficial for the model and could hinder its performance. Begins by making assumptions, which is later validated. Next, groups applicants and classifications and places them in an "Other" bin for all the one-off funded accounts.
 
 ![1677702515014](image/README/1677702515014.png)
 
-In order for the model to perform correctly, it cannot have string values. An easy way to covert string values to a interager or float is by using pd.get_dummies and create a new dataframe.
+In order for the model to perform correctly, string values are converted string values to integers or floats is by using `pd.get_dummies`. 
 
 ![1677702803250](image/README/1677702803250.png)
 
-Now that the data is ready to load into a model, we can split the target value and the features. I will be using the "IS_SUCCESSFUL" as the target and the remaining variables will be the features.
+Next it splits the target value and the features using the "IS_SUCCESSFUL" as the target and the remaining variables will be the features.
 
 ![1677703063213](image/README/1677703063213.png)
 
@@ -76,6 +111,6 @@ Loss: 0.47418802976608276, Accuracy: 0.7865889072418213
 
 ---
 
-# **Summary**
+# **Conclusion**
 
 By adding NAME and using binning techniques, along with adding more hidden layers and adjusting the number of neurons, the model's performance and stability improved. Based on the current data and features available, I consider this the most optimal outcome achievable (given the goal to reach at least 75%). Considering the model's intended use-case, it should be effective in determining the best allocation of funds for maximizing success.  If there is a desire to explore a more accurate model, I'd suggest looking into supervised learning Decision Tree or Recurrent Neural Networks models.
